@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.itcast.crm.entity.Dict" table="t_dict">
+		<id name="dict_id" column="dict_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="dict_name" column="dict_name"></property>
+		<property name="dict_type" column="dict_type"></property>
+	</class>
+</hibernate-mapping>
+
+
+
+

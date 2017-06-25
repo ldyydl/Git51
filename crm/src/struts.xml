@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<!-- 配置文件大小 -->
+	<constant name="struts.multipart.maxSize" value="209715200"></constant>
+	
+	<package name="demo" extends="struts-default" namespace="/">
+		
+		<action name="user_*" class="userAction" method="{1}">
+			<!-- 注册 -->
+			<result name="register">/login.jsp</result>
+			<!-- 登录 -->
+			<result name="loginsuccess">/index.htm</result>
+			<result name="login">/login.jsp</result>
+		</action>
+		
+		<action name="customer_*" class="customerAction" method="{1}">
+			<!-- 跳转到添加页面 -->
+			<result name="toAddPage">/jsp/customer/add.jsp</result>
+			<result name="addCustomer">/jsp/success.jsp</result>
+			<result name="list">/jsp/customer/list.jsp</result>
+			<result name="listpage">/jsp/customer/listpage.jsp</result>
+			
+			<!-- 到修改页面 -->
+			<result name="toUpdatePage">/jsp/customer/edit.jsp</result>
+			<!-- 到列表页面 -->
+			<result name="tolist" type="redirectAction">customer_list</result>
+			
+			<!-- input -->
+			<result name="input">/jsp/error.jsp</result>
+			
+			<!-- 设置上传 -->
+			<interceptor-ref name="defaultStack">
+				<!-- 设置默认拦截器文件上传拦截器参数 -->
+				<!-- 文件大小 
+					使用拦截器设置文件大小，和tomcat版本有关系的
+				-->
+				<param name="fileUpload.maximumSize">209715200</param>
+				<!-- 文件扩展名 -->
+				<param name="fileUpload.allowedExtensions">.jpg</param>
+			</interceptor-ref>
+		</action>
+		
+		<!-- 联系人 -->
+		<action name="linkman_*" class="linkManAction" method="{1}">
+			<result name="list">/jsp/linkman/list.jsp</result>
+		</action>
+		<action name="userAction_*" class="linkManAction" method="{1}">
+			<result name="list">/jsp/linkman/list.jsp</result>
+		</action>
+	</package>
+
+</struts>
+
+
+
+
